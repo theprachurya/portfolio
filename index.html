@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prachurya — Full-Stack &amp; AI Engineering, A Digital Edition</title>
+<meta name="description" content="Prachurya — Computer Science &amp; Engineering (AI &amp; ML) undergraduate at SRM Institute of Science and Technology, building full-stack and AI-assisted software.">
+<meta property="og:title" content="Prachurya — Full-Stack &amp; AI Engineering">
+<meta property="og:description" content="Seven shipped projects, one developer, presented as a paginated digital edition.">
+<meta property="og:image" content="https://github.com/theprachurya.png">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2318160f'/%3E%3Ctext x='50' y='70' font-size='60' text-anchor='middle' fill='%23f0b800' font-family='Georgia,serif'%3EP%3C/text%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; }
+  img { max-width: 100%; display: block; }
+  a { color: inherit; text-decoration: none; }
+  ul { margin: 0; padding: 0; list-style: none; }
+  h1,h2,h3,h4,p,dl,dd { margin: 0; }
+  button, input { font: inherit; color: inherit; }
+  button { cursor: pointer; background: none; border: none; }
+
+  :root {
+    --paper: #f6f1e6;
+    --paper-alt: #efe7d5;
+    --card: #fffdf7;
+    --ink: #18160f;
+    --ink-soft: #423e33;
+    --muted: #726c5c;
+    --rule: #18160f;
+    --rule-faint: #ddd3ba;
+    --terracotta: #c94f30;
+    --terracotta-dark: #a53f26;
+    --teal: #0d6b68;
+    --gold: #ecb100;
+    --dark-panel: #17150f;
+    --dark-panel-2: #211d14;
+    --shadow: 0 20px 55px rgba(35, 26, 12, .16);
+    --shadow-lift: 0 28px 65px rgba(35, 26, 12, .2);
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-body: 'Inter', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --max-w: 1180px;
+    --spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+    --ease-out: cubic-bezier(0.25, 0.1, 0.25, 1);
+  }
+
+  body { background: var(--paper); color: var(--ink); font-family: var(--font-body); line-height: 1.7; overflow-x: hidden; }
+  ::selection { background: var(--gold); color: var(--ink); }
+  :focus-visible { outline: 3px solid var(--terracotta); outline-offset: 2px; }
+  .wrap { width: min(var(--max-w), calc(100% - 40px)); margin: 0 auto; }
+
+  /* ---------- Topline ---------- */
+  .topline {
+    height: 34px; border-bottom: 1px solid var(--rule); font-family: var(--font-mono); font-size: 0.7rem;
+    letter-spacing: .06em; text-transform: uppercase; color: var(--muted);
+    display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  }
+  .topline span:nth-child(2) { color: var(--ink-soft); }
+
+  /* ---------- Masthead ---------- */
+  header.masthead {
+    position: sticky; top: 0; z-index: 60; background: rgba(246, 241, 230, .92);
+    backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--rule);
+  }
+  .mast-row { height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+  .brand {
+    display: flex; align-items: center; gap: 10px; font-family: var(--font-display); font-weight: 700;
+    font-size: 26px; letter-spacing: -.03em; transition: opacity .2s ease;
+  }
+  .brand:hover { opacity: .75; }
+  .beacon { width: 9px; height: 9px; border-radius: 50%; background: var(--teal); position: relative; flex-shrink: 0; }
+  .beacon::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 1px solid var(--teal); animation: ripple 2.4s ease-out infinite; }
+  @keyframes ripple { 0% { transform: scale(1); opacity: .6; } 100% { transform: scale(2.8); opacity: 0; } }
+  .brand em { font-style: italic; color: var(--terracotta); }
+
+  .mast-actions { display: flex; align-items: center; gap: 10px; }
+  .icon-btn {
+    display: inline-flex; align-items: center; gap: 6px; font-family: var(--font-mono); font-size: 0.75rem;
+    border: 1px solid var(--rule); padding: 8px 11px; background: var(--card);
+    transition: border-color .2s ease, color .2s ease, transform .25s var(--spring);
+  }
+  .icon-btn:hover { border-color: var(--terracotta); color: var(--terracotta); transform: translateY(-1px); }
+  .icon-btn:active { transform: scale(.97) translateY(0); }
+  .menu-toggle { display: none; }
+
+  nav.page-nav { border-top: 1px solid var(--rule-faint); }
+  .page-nav-row { display: flex; gap: clamp(4px, 2vw, 26px); overflow-x: auto; }
+  .page-nav-row a {
+    position: relative; display: flex; align-items: center; gap: 7px; font-family: var(--font-mono); font-size: 0.8rem;
+    letter-spacing: .04em; text-transform: uppercase; color: var(--muted); padding: 13px 4px;
+    border-bottom: 2px solid transparent; white-space: nowrap;
+    transition: color .25s ease, border-color .3s var(--ease-out);
+  }
+  .page-nav-row a .num { color: var(--rule-faint); transition: color .25s ease; }
+  .page-nav-row a:hover { color: var(--ink); border-bottom-color: var(--ink); }
+  .page-nav-row a.active { color: var(--ink); border-bottom-color: var(--terracotta); }
+  .page-nav-row a.active .num { color: var(--terracotta); }
+  .page-nav-row a .key { font-size: 0.65rem; border: 1px solid var(--rule-faint); border-radius: 3px; padding: 0 4px; color: var(--muted); }
+
+  @media (max-width: 720px) {
+    .page-nav-row { display: none; flex-direction: column; position: absolute; left: 20px; right: 20px; top: 100%; background: var(--card); border: 1px solid var(--rule); box-shadow: var(--shadow); padding: 6px 14px; }
+    .page-nav-row.open { display: flex; }
+    .menu-toggle { display: inline-flex; }
+  }
+
+  /* ---------- Pages ---------- */
+  main { position: relative; min-height: 60vh; }
+  .page {
+    display: none; padding-block: clamp(34px, 6vw, 58px) clamp(60px, 8vw, 100px);
+    opacity: 0; transform: translateY(18px);
+    transition: opacity .45s var(--ease-out), transform .45s var(--ease-out);
+    will-change: opacity, transform;
+  }
+  .page.active { display: block; }
+  .page.show { opacity: 1; transform: translateY(0); }
+  @media (prefers-reduced-motion: reduce) { .page { transition: none; } }
+
+  .reveal-item { opacity: 0; transform: translateY(18px); }
+  .page.show .reveal-item {
+    animation: revealIn .6s var(--ease-out) forwards;
+    animation-delay: calc(var(--reveal-i, 0) * 0.09s + 0.06s);
+  }
+  @keyframes revealIn { to { opacity: 1; transform: translateY(0); } }
+  @media (prefers-reduced-motion: reduce) { .reveal-item { opacity: 1; transform: none; animation: none !important; } }
+
+  .page-kicker { font-family: var(--font-mono); font-size: 0.75rem; text-transform: uppercase; letter-spacing: .1em; color: var(--terracotta); }
+  .page-title { font-family: var(--font-display); font-weight: 600; font-size: clamp(2rem, 4.5vw, 2.9rem); letter-spacing: -.025em; margin-top: 8px; line-height: 1.1; }
+  .page-intro { color: var(--muted); max-width: 62ch; margin-top: 12px; font-size: 1.02rem; line-height: 1.7; }
+
+  /* ---------- Cover page ---------- */
+  .cover-grid { display: grid; grid-template-columns: 1.35fr 1fr; gap: clamp(28px, 5vw, 54px); align-items: start; }
+  .headline { font-family: var(--font-display); font-weight: 600; font-size: clamp(2.1rem, 5vw, 3.6rem); line-height: 1.05; letter-spacing: -.025em; }
+  .headline .hl { background: linear-gradient(180deg, transparent 62%, var(--gold) 62%); }
+  .lede { margin-top: 22px; font-size: 1.08rem; color: var(--ink-soft); max-width: 60ch; line-height: 1.75; }
+  .lede::first-letter { float: left; font-family: var(--font-display); font-weight: 700; font-size: 3.8rem; line-height: .8; padding-right: 10px; padding-top: 4px; color: var(--terracotta); }
+  .hero-ctas { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
+
+  .btn {
+    display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: .8rem; font-weight: 500;
+    text-transform: uppercase; letter-spacing: .03em; padding: 12px 20px; border: 2px solid var(--ink);
+    transition: background .25s ease, border-color .25s ease, color .25s ease, transform .3s var(--spring);
+  }
+  .btn:active { transform: scale(.97); }
+  .btn-fill { background: var(--ink); color: var(--paper); }
+  .btn-fill:hover { background: var(--terracotta); border-color: var(--terracotta); color: #fff; transform: translateY(-2px); }
+  .btn-line:hover { background: var(--ink); color: var(--paper); transform: translateY(-2px); }
+
+  .telemetry { position: relative; border: 2px solid var(--rule); background: var(--card); padding: 24px; overflow: hidden; animation: gentleFloat 6s ease-in-out infinite; }
+  .telemetry::before { content: ''; position: absolute; left: -36px; bottom: -50px; width: 190px; height: 190px; border-radius: 50%; background: var(--terracotta); opacity: .14; }
+  .telemetry::after { content: ''; position: absolute; right: -50px; top: -50px; width: 160px; height: 160px; border-radius: 50%; border: 26px solid var(--teal); opacity: .16; }
+  @keyframes gentleFloat { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-5px); } }
+  .tele-head { display: flex; align-items: center; gap: 13px; position: relative; }
+  .tele-avatar {
+    width: 56px; height: 56px; border-radius: 50%; border: 2px solid var(--rule); object-fit: cover; background: var(--paper-alt);
+    transition: transform .35s var(--spring);
+  }
+  .tele-avatar:hover { transform: scale(1.1); }
+  .tele-head h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 600; }
+  .tele-head p { font-family: var(--font-mono); font-size: .75rem; color: var(--muted); }
+  .tele-metrics { position: relative; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 20px; }
+  .tele-cell {
+    border: 1px solid var(--rule-faint); padding: 12px; background: var(--paper-alt);
+    transition: border-color .2s ease, transform .3s var(--spring);
+  }
+  .tele-cell:hover { border-color: var(--rule); transform: translateY(-2px); }
+  .tele-cell strong { display: block; font-family: var(--font-display); font-size: 1.5rem; }
+  .tele-cell span { font-family: var(--font-mono); font-size: .7rem; text-transform: uppercase; color: var(--muted); }
+  .tele-terminal { position: relative; margin-top: 18px; font-family: var(--font-mono); font-size: .75rem; color: var(--ink-soft); line-height: 1.85; background: var(--dark-panel); color: #cfc9ba; padding: 14px 16px; border-radius: 3px; }
+  .tele-terminal .p { color: var(--gold); }
+  .tele-terminal .v { color: #8fd6d2; }
+  .tele-status { position: relative; margin-top: 14px; font-family: var(--font-mono); font-size: .75rem; color: var(--teal); display: flex; align-items: center; gap: 7px; }
+
+  @media (max-width: 860px) { .cover-grid { grid-template-columns: 1fr; } }
+
+  /* ---------- Work page ---------- */
+  .controls-row { display: flex; flex-wrap: wrap; gap: 14px; justify-content: space-between; align-items: center; margin-top: 26px; }
+  .filters { display: flex; gap: 8px; flex-wrap: wrap; }
+  .filter {
+    font-family: var(--font-mono); font-size: .75rem; text-transform: uppercase; letter-spacing: .03em;
+    border: 2px solid var(--ink); padding: 7px 12px; background: var(--card);
+    transition: background .2s ease, color .2s ease, transform .25s var(--spring);
+  }
+  .filter:active { transform: scale(.96); }
+  .filter.active, .filter:hover { background: var(--ink); color: var(--paper); }
+  .search-wrap { position: relative; }
+  .search-wrap input {
+    border: 2px solid var(--ink); background: var(--card); padding: 9px 14px 9px 30px; font-family: var(--font-mono); font-size: .8rem; width: 220px;
+    transition: border-color .2s ease, box-shadow .2s ease;
+  }
+  .search-wrap input:focus { outline: none; border-color: var(--terracotta); box-shadow: 0 0 0 3px rgba(201, 79, 48, .12); }
+  .search-wrap::before { content: '⌕'; position: absolute; left: 10px; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: .95rem; }
+
+  .projects-grid { margin-top: 28px; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 18px; }
+  .project-card {
+    background: var(--card); border: 1px solid var(--rule-faint); padding: 26px; display: flex; flex-direction: column;
+    min-height: 250px; cursor: pointer;
+    transition: transform .35s var(--spring), box-shadow .3s ease, border-color .3s ease;
+    will-change: transform;
+  }
+  .project-card:hover { transform: translateY(-6px) scale(1.012); box-shadow: var(--shadow-lift); border-color: var(--rule); }
+  .project-card:active { transform: translateY(-2px) scale(.995); }
+  .project-card.featured { grid-column: 1 / -1; background: var(--dark-panel); color: #efeadd; border-color: var(--dark-panel); min-height: 200px; }
+  .project-card.featured .tagline, .project-card.featured .stackline { color: #a9a291; }
+  .project-card.featured .tags span { border-color: #3a352a; color: #d8d2c2; }
+  .tagline { font-family: var(--font-mono); font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; color: var(--terracotta); }
+  .project-card.featured .tagline { color: var(--gold); }
+  .project-card h3 { font-family: var(--font-display); font-weight: 600; font-size: 1.5rem; margin-top: 12px; letter-spacing: -.015em; }
+  .stackline { font-family: var(--font-mono); font-size: .75rem; color: var(--muted); margin-top: 4px; }
+  .project-card p.desc { margin-top: 12px; color: var(--ink-soft); font-size: .92rem; flex-grow: 1; line-height: 1.65; }
+  .project-card.featured p.desc { color: #cfc9ba; }
+  .card-bottom { margin-top: 20px; display: flex; justify-content: space-between; align-items: center; }
+  .tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tags span {
+    border: 1px solid var(--rule-faint); padding: 4px 8px; font-family: var(--font-mono); font-size: .7rem; text-transform: uppercase;
+    transition: border-color .2s ease, background .2s ease;
+  }
+  .project-card:hover .tags span { border-color: var(--rule); }
+  .card-arrow {
+    font-size: 1.2rem; color: var(--muted);
+    transition: transform .35s var(--spring), color .2s ease;
+  }
+  .project-card:hover .card-arrow { transform: translate(3px, -3px); color: var(--terracotta); }
+  .no-results { display: none; text-align: center; padding: 50px 0; color: var(--muted); font-family: var(--font-mono); font-size: .85rem; }
+
+  /* ---------- Stack page ---------- */
+  .stack-panels { margin-top: 28px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+  .stack-panel {
+    border: 1px solid var(--rule-faint); background: var(--card); padding: 24px;
+    transition: border-color .2s ease, transform .3s var(--spring);
+  }
+  .stack-panel:hover { border-color: var(--rule); transform: translateY(-3px); }
+  .stack-panel h4 { font-family: var(--font-mono); font-size: .75rem; text-transform: uppercase; letter-spacing: .06em; color: var(--terracotta); border-bottom: 2px solid var(--rule); padding-bottom: 10px; margin-bottom: 14px; }
+  .pill-wrap { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill {
+    border: 1px solid var(--rule-faint); background: var(--paper-alt); padding: 7px 11px; font-size: .85rem;
+    transition: transform .3s var(--spring), background .2s ease, border-color .2s ease, box-shadow .2s ease;
+  }
+  .pill:hover { transform: translateY(-3px); background: var(--card); border-color: var(--rule); box-shadow: 0 4px 12px rgba(35, 26, 12, .08); }
+  @media (max-width: 860px) { .stack-panels { grid-template-columns: 1fr 1fr; } }
+  @media (max-width: 520px) { .stack-panels { grid-template-columns: 1fr; } }
+
+  /* ---------- About page ---------- */
+  .about-grid { margin-top: 28px; display: grid; grid-template-columns: 1.3fr 1fr; gap: 34px; }
+  .about-grid p { color: var(--ink-soft); max-width: 60ch; line-height: 1.75; }
+  .about-grid p + p { margin-top: 14px; }
+  .principle {
+    border-left: 3px solid var(--terracotta); background: var(--paper-alt); padding: 14px 18px; margin-top: 14px;
+    transition: border-color .25s ease, transform .25s ease, background .25s ease;
+  }
+  .principle:hover { border-color: var(--teal); transform: translateX(4px); background: var(--card); }
+  .principle h5 { font-family: var(--font-display); font-size: 1.05rem; font-weight: 600; letter-spacing: -.01em; }
+  .principle p { margin-top: 5px; font-size: .9rem; max-width: none; }
+  .exhibit-box { border: 1px solid var(--rule-faint); background: var(--card); padding: 24px; position: sticky; top: 130px; }
+  .exhibit-box h4 { font-family: var(--font-mono); font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 14px; color: var(--muted); }
+  .exhibit-box img { margin-bottom: 8px; border: 1px solid var(--rule-faint); }
+  .exhibit-cap { font-family: var(--font-mono); font-size: .7rem; color: var(--muted); margin-bottom: 18px; }
+  @media (max-width: 860px) { .about-grid { grid-template-columns: 1fr; } .exhibit-box { position: static; } }
+
+  /* ---------- Contact page ---------- */
+  .contact-panel {
+    margin-top: 28px; border: 2px solid var(--rule); background: var(--dark-panel); color: #efeadd;
+    padding: clamp(28px, 5vw, 46px); position: relative; overflow: hidden;
+  }
+  .contact-panel::before { content: ''; position: absolute; top: -40px; right: -40px; width: 200px; height: 200px; border-radius: 50%; background: var(--terracotta); opacity: .08; pointer-events: none; }
+  .contact-panel::after { content: ''; position: absolute; bottom: -60px; left: -30px; width: 160px; height: 160px; border-radius: 50%; border: 24px solid var(--gold); opacity: .1; pointer-events: none; }
+  .contact-panel .email { font-family: var(--font-display); font-size: clamp(1.6rem, 4vw, 2.6rem); letter-spacing: -.02em; color: var(--gold); position: relative; }
+  .contact-actions { margin-top: 24px; display: flex; gap: 12px; flex-wrap: wrap; position: relative; }
+  .contact-btn {
+    border: 1px solid #3c372c; padding: 11px 16px; font-family: var(--font-mono); font-size: .78rem;
+    text-transform: uppercase; letter-spacing: .05em;
+    transition: border-color .2s ease, color .2s ease, background .2s ease, transform .3s var(--spring);
+  }
+  .contact-btn:hover { border-color: var(--terracotta); color: #fff; background: var(--terracotta); transform: translateY(-2px); }
+  .contact-btn:active { transform: scale(.97) translateY(0); }
+
+  /* ---------- Footer ---------- */
+  footer.site-footer { border-top: 2px solid var(--rule); padding-block: 20px; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; font-family: var(--font-mono); font-size: .72rem; color: var(--muted); }
+  footer.site-footer button { transition: color .2s ease; }
+  footer.site-footer button:hover { color: var(--terracotta); text-decoration: underline; }
+
+  /* ---------- Modal ---------- */
+  .modal-backdrop { position: fixed; inset: 0; background: rgba(20, 17, 10, .6); backdrop-filter: blur(6px); display: flex; align-items: center; justify-content: center; padding: 20px; z-index: 200; opacity: 0; pointer-events: none; transition: opacity .28s ease; }
+  .modal-backdrop.open { opacity: 1; pointer-events: auto; }
+  .modal-window { width: min(600px, 100%); max-height: 84vh; overflow: auto; background: var(--card); border: 2px solid var(--rule); padding: 30px; transform: scale(.92) translateY(14px); transition: transform .4s var(--spring); }
+  .modal-backdrop.open .modal-window { transform: scale(1) translateY(0); }
+  .modal-top { display: flex; justify-content: space-between; gap: 14px; align-items: start; }
+  .modal-close {
+    border: 1px solid var(--rule); padding: 6px 10px; font-family: var(--font-mono); font-size: .72rem;
+    transition: border-color .2s ease, color .2s ease, transform .25s var(--spring);
+  }
+  .modal-close:hover { border-color: var(--terracotta); color: var(--terracotta); transform: scale(1.05); }
+  .modal-close:active { transform: scale(.95); }
+  .modal-kicker { font-family: var(--font-mono); font-size: .72rem; text-transform: uppercase; letter-spacing: .06em; color: var(--terracotta); }
+  .modal-title { font-family: var(--font-display); font-size: 1.7rem; font-weight: 600; margin-top: 6px; letter-spacing: -.02em; }
+  .modal-desc { margin-top: 14px; color: var(--ink-soft); line-height: 1.7; }
+  .modal-features { margin-top: 18px; border: 1px solid var(--rule-faint); background: var(--paper-alt); padding: 16px 18px; }
+  .modal-features li { font-size: .88rem; padding-left: 16px; position: relative; margin-bottom: 8px; line-height: 1.6; }
+  .modal-features li::before { content: '—'; position: absolute; left: 0; color: var(--terracotta); }
+  .modal-actions { margin-top: 20px; display: flex; gap: 10px; flex-wrap: wrap; }
+
+  /* ---------- Toast ---------- */
+  .toast { position: fixed; bottom: 22px; left: 50%; transform: translateX(-50%) translateY(20px); background: var(--dark-panel); color: #f2ede0; padding: 12px 20px; font-family: var(--font-mono); font-size: .8rem; border: 1px solid var(--gold); opacity: 0; pointer-events: none; transition: opacity .3s ease, transform .3s var(--spring); z-index: 300; }
+  .toast.show { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+  /* ---------- Print ---------- */
+  @media print {
+    header.masthead, .topline, .filters, .search-wrap, .modal-backdrop, .toast, footer.site-footer button, .card-arrow { display: none !important; }
+    body { background: #fff; }
+    .page { display: block !important; opacity: 1 !important; transform: none !important; page-break-after: always; }
+    .project-card { break-inside: avoid; }
+    .reveal-item { opacity: 1 !important; transform: none !important; animation: none !important; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    .telemetry { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topline wrap">
+  <span>SRM Institute of Science &amp; Technology</span>
+  <span id="clockLine">—</span>
+  <span>Est. 2020</span>
+</div>
+
+<header class="masthead">
+  <div class="wrap mast-row">
+    <a href="#cover" class="brand" data-page="cover"><span class="beacon"></span>PRACHURYA<em>.</em></a>
+    <div class="mast-actions">
+      <button class="icon-btn" id="soundToggle" title="Toggle interface sound"><span id="soundIcon">🔊</span> <span id="soundState">On</span></button>
+      <a class="icon-btn" href="https://github.com/theprachurya" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      <button class="icon-btn menu-toggle" id="menuToggle">Menu</button>
+    </div>
+  </div>
+  <nav class="page-nav wrap">
+    <div class="page-nav-row" id="pageNavRow">
+      <a href="#cover" data-page="cover" class="active"><span class="num">00</span> Cover <span class="key">1</span></a>
+      <a href="#work" data-page="work"><span class="num">01</span> Work <span class="key">2</span></a>
+      <a href="#stack" data-page="stack"><span class="num">02</span> Stack <span class="key">3</span></a>
+      <a href="#about" data-page="about"><span class="num">03</span> About <span class="key">4</span></a>
+      <a href="#contact" data-page="contact"><span class="num">04</span> Contact <span class="key">5</span></a>
+    </div>
+  </nav>
+</header>
+
+<main>
+
+  <!-- ===== COVER ===== -->
+  <section class="page" data-page="cover" id="cover">
+    <div class="wrap cover-grid">
+      <div class="reveal-item">
+        <p class="page-kicker">A Digital Edition</p>
+        <h1 class="headline">Full-stack software — with the <span class="hl">AI built in</span>, not bolted on.</h1>
+        <p class="lede">Prachurya is a Computer Science &amp; Engineering (AI &amp; ML) undergraduate at SRM Institute of Science and Technology who spends most of his time outside class shipping complete software alone — frontend, backend, database, and the AI layer in between. Seven public repositories cover everything from a local-first study planner to a restaurant operations system, several skipping the cloud database entirely, by design.</p>
+        <div class="hero-ctas">
+          <a href="#work" data-page="work" class="btn btn-fill">Browse the work →</a>
+          <a href="#contact" data-page="contact" class="btn btn-line">Get in touch</a>
+        </div>
+      </div>
+
+      <aside class="telemetry reveal-item">
+        <div class="tele-head">
+          <img class="tele-avatar" id="teleAvatar" src="https://avatars.githubusercontent.com/u/65926166?v=4" alt="Prachurya">
+          <div>
+            <h3 id="teleName">Prachurya</h3>
+            <p>@theprachurya</p>
+          </div>
+        </div>
+        <div class="tele-metrics">
+          <div class="tele-cell"><strong id="metricRepos">0</strong><span>Public repos</span></div>
+          <div class="tele-cell"><strong id="metricFollowers">0</strong><span>Followers</span></div>
+        </div>
+        <div class="tele-terminal">
+          <div><span class="p">$</span> status --current</div>
+          <div>→ focus: <span class="v">AI-assisted, local-first software</span></div>
+          <div>→ stack: <span class="v">Next.js / Flask / Supabase / Gemini</span></div>
+          <div>→ base: <span class="v">SRM Institute of Science &amp; Technology</span></div>
+        </div>
+        <div class="tele-status"><span class="beacon"></span> Live &amp; building</div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- ===== WORK ===== -->
+  <section class="page" data-page="work" id="work">
+    <div class="wrap">
+      <div class="reveal-item">
+        <p class="page-kicker">Page One</p>
+        <h2 class="page-title">Selected work</h2>
+        <p class="page-intro">Seven repositories, cross-checked against the live GitHub profile — nothing here is invented. Filter by category or search directly.</p>
+      </div>
+
+      <div class="controls-row reveal-item">
+        <div class="filters" id="filters">
+          <button class="filter active" data-filter="all">All (7)</button>
+          <button class="filter" data-filter="ai">AI &amp; ML</button>
+          <button class="filter" data-filter="fullstack">Full-Stack</button>
+          <button class="filter" data-filter="concept">Concept</button>
+        </div>
+        <div class="search-wrap">
+          <input type="text" id="projectSearch" placeholder="Search projects… ( / )">
+        </div>
+      </div>
+
+      <div class="projects-grid reveal-item" id="projectGrid">
+        <article class="project-card featured" data-cat="ai fullstack" data-project="study-quest" onclick="openInspector('study-quest')">
+          <div class="tagline">Featured · AI &amp; Productivity</div>
+          <h3>Study Quest</h3>
+          <p class="stackline">Next.js 16 · TypeScript · Gemini · RAG · Tailwind</p>
+          <p class="desc">A 100%-local-first AI study planner. Gemini drafts the schedule, an AI tutor answers questions with optional live web search, and a mind-map view turns notes into something navigable.</p>
+          <div class="card-bottom"><div class="tags"><span>Local-first</span><span>No cloud DB</span></div><span class="card-arrow">↗</span></div>
+        </article>
+
+        <article class="project-card" data-cat="fullstack" data-project="pageturn" onclick="openInspector('pageturn')">
+          <div class="tagline">Reading &amp; Offline-First</div>
+          <h3>PageTurn</h3>
+          <p class="stackline">Next.js · React · Supabase · epub.js · PWA</p>
+          <p class="desc">A browser-based EPUB reader built to feel native — highlights, bookmarks, shelves, offline caching, and cross-device sync.</p>
+          <div class="card-bottom"><div class="tags"><span>Live</span></div><span class="card-arrow">↗</span></div>
+        </article>
+
+        <article class="project-card" data-cat="fullstack" data-project="saveur" onclick="openInspector('saveur')">
+          <div class="tagline">Operations</div>
+          <h3>Saveur Restaurant OS</h3>
+          <p class="stackline">JavaScript · Supabase · Vercel</p>
+          <p class="desc">Restaurant ordering &amp; management software with separate customer/owner workflows and live inventory tracking.</p>
+          <div class="card-bottom"><div class="tags"><span>Live</span></div><span class="card-arrow">↗</span></div>
+        </article>
+
+        <article class="project-card" data-cat="ai fullstack" data-project="ai-planner" onclick="openInspector('ai-planner')">
+          <div class="tagline">AI &amp; Education</div>
+          <h3>AI Study Planner</h3>
+          <p class="stackline">Python · Flask · SQLite · Gemini</p>
+          <p class="desc">Turns subjects, deadlines, and hours into a day-by-day schedule, with a repair step for malformed AI output.</p>
+          <div class="card-bottom"><div class="tags"><span>Repo only</span></div><span class="card-arrow">↗</span></div>
+        </article>
+
+        <article class="project-card" data-cat="fullstack" data-project="ambient" onclick="openInspector('ambient')">
+          <div class="tagline">Productivity &amp; Accessibility</div>
+          <h3>Ambient Study Companion</h3>
+          <p class="stackline">Python · Flask · Docker</p>
+          <p class="desc">A self-hosted focus companion — ambient sound, Pomodoro timers, wellness logging — accessible by design.</p>
+          <div class="card-bottom"><div class="tags"><span>Self-hosted</span></div><span class="card-arrow">↗</span></div>
+        </article>
+
+        <article class="project-card" data-cat="fullstack" data-project="novel-tracker" onclick="openInspector('novel-tracker')">
+          <div class="tagline">Library &amp; Tracking</div>
+          <h3>Web Novel Tracker</h3>
+          <p class="stackline">Vite · JavaScript · Supabase</p>
+          <p class="desc">Tracks web-novel reading progress with automatic cover lookup via AniList, Jikan, and Google Books.</p>
+          <div class="card-bottom"><div class="tags"><span>Live</span></div><span class="card-arrow">↗</span></div>
+        </article>
+
+        <article class="project-card" data-cat="concept" data-project="safar" onclick="openInspector('safar')">
+          <div class="tagline">Concept</div>
+          <h3>Safar</h3>
+          <p class="stackline">Java · Recommendation logic</p>
+          <p class="desc">A train-ticket concept recommending alternative stations when a route is waitlisted, preserving the intended boarding point.</p>
+          <div class="card-bottom"><div class="tags"><span>Repo only</span></div><span class="card-arrow">↗</span></div>
+        </article>
+      </div>
+      <p class="no-results" id="noResults">No projects match that search.</p>
+    </div>
+  </section>
+
+  <!-- ===== STACK ===== -->
+  <section class="page" data-page="stack" id="stack">
+    <div class="wrap">
+      <div class="reveal-item">
+        <p class="page-kicker">Page Two</p>
+        <h2 class="page-title">The toolkit</h2>
+        <p class="page-intro">Every item here appears consistently in the GitHub profile's own technical-stack listing.</p>
+      </div>
+      <div class="stack-panels reveal-item">
+        <div class="stack-panel">
+          <h4>Languages</h4>
+          <div class="pill-wrap"><span class="pill">Python</span><span class="pill">TypeScript</span><span class="pill">JavaScript</span><span class="pill">Java</span><span class="pill">C</span><span class="pill">C++</span><span class="pill">Kotlin</span><span class="pill">Bash</span></div>
+        </div>
+        <div class="stack-panel">
+          <h4>Web &amp; Backend</h4>
+          <div class="pill-wrap"><span class="pill">Next.js</span><span class="pill">React</span><span class="pill">Flask</span><span class="pill">Node.js</span><span class="pill">Vite</span><span class="pill">Tailwind CSS</span></div>
+        </div>
+        <div class="stack-panel">
+          <h4>Data, AI &amp; Infrastructure</h4>
+          <div class="pill-wrap"><span class="pill">PostgreSQL</span><span class="pill">SQLite</span><span class="pill">Supabase</span><span class="pill">Google Gemini</span><span class="pill">RAG</span><span class="pill">Docker</span><span class="pill">Vercel</span><span class="pill">Linux &amp; Git</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== ABOUT ===== -->
+  <section class="page" data-page="about" id="about">
+    <div class="wrap">
+      <div class="reveal-item">
+        <p class="page-kicker">Page Three</p>
+        <h2 class="page-title">About</h2>
+      </div>
+      <div class="about-grid reveal-item">
+        <div>
+          <p>Prachurya studies Computer Science &amp; Engineering with a focus on AI &amp; Machine Learning at SRM Institute of Science and Technology. Outside coursework, the practice stays consistent: pick a real, specific problem, then build the entire stack around it — frontend, backend, persistence, and increasingly an AI layer that does actual work rather than window dressing.</p>
+
+          <div class="principle">
+            <h5>Local-first where it matters</h5>
+            <p>Cloud dependencies add latency and lock-in. Study Quest and Ambient Study Companion keep data on-device or self-hosted rather than defaulting to a cloud database.</p>
+          </div>
+          <div class="principle">
+            <h5>Resilient AI integration</h5>
+            <p>LLM output is non-deterministic. AI Study Planner includes a repair step that rebuilds the plan when Gemini's response comes back malformed, instead of failing outright.</p>
+          </div>
+          <div class="principle">
+            <h5>End-to-end ownership</h5>
+            <p>Every project here runs the full distance — interface, persistence, integrations, and deployment — rather than stopping at a demo.</p>
+          </div>
+        </div>
+
+        <div class="exhibit-box">
+          <h4>Fig. 1 — GitHub activity</h4>
+          <img src="https://github-stats-extended.vercel.app/api?username=theprachurya&show_icons=true&hide_border=true&bg_color=00000000&title_color=C94F30&icon_color=C94F30&text_color=18160F" alt="GitHub stats for theprachurya" loading="lazy" onerror="this.parentElement.style.display='none'">
+          <p class="exhibit-cap">Repositories, stars, and commit activity — live from GitHub.</p>
+          <img src="https://github-stats-extended.vercel.app/api/top-langs/?username=theprachurya&layout=compact&hide_border=true&bg_color=00000000&title_color=C94F30&text_color=18160F" alt="Most-used languages for theprachurya" loading="lazy" onerror="this.style.display='none'">
+          <p class="exhibit-cap" style="margin-bottom:0">Most-used languages by byte count.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CONTACT ===== -->
+  <section class="page" data-page="contact" id="contact">
+    <div class="wrap">
+      <div class="reveal-item">
+        <p class="page-kicker">Page Four</p>
+        <h2 class="page-title">Get in touch</h2>
+        <p class="page-intro">Replies come from a real person — email is the fastest route, GitHub the best place to inspect current work.</p>
+      </div>
+      <div class="contact-panel reveal-item">
+        <div class="email" id="copyFeedback">prachurya119@gmail.com</div>
+        <div class="contact-actions">
+          <button class="contact-btn" onclick="copyContact('prachurya119@gmail.com')">Copy email</button>
+          <a class="contact-btn" href="mailto:prachurya119@gmail.com">Email</a>
+          <a class="contact-btn" href="https://in.linkedin.com/in/prachurya" target="_blank" rel="noopener noreferrer">LinkedIn</a>
+          <a class="contact-btn" href="https://github.com/theprachurya" target="_blank" rel="noopener noreferrer">GitHub</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer wrap">
+  <span>Prachurya — Digital Edition · Est. 2020</span>
+  <button type="button" id="printBtn">Print full edition</button>
+</footer>
+
+<!-- ===== Modal ===== -->
+<div class="modal-backdrop" id="inspectorModal" onclick="handleBackdrop(event)">
+  <div class="modal-window">
+    <div class="modal-top">
+      <div>
+        <p class="modal-kicker" id="modalCategory">—</p>
+        <h3 class="modal-title" id="modalTitle">—</h3>
+      </div>
+      <button class="modal-close" onclick="closeInspector()">Esc ✕</button>
+    </div>
+    <p class="modal-desc" id="modalDescription"></p>
+    <div class="modal-features">
+      <ul id="modalFeaturesList"></ul>
+    </div>
+    <div class="modal-actions">
+      <a id="modalRepoLink" class="btn btn-fill" target="_blank" rel="noopener noreferrer">View repository</a>
+      <a id="modalLiveLink" class="btn btn-line" target="_blank" rel="noopener noreferrer" style="display:none">Live demo</a>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"><span id="toastMsg"></span></div>
+
+<script>
+(function () {
+  "use strict";
+
+  /* ---------------- Data (verified) ---------------- */
+  var PROJECTS = {
+    "study-quest": { category: "AI & Productivity", repo: "https://github.com/theprachurya/study-quest", live: null,
+      description: "A 100%-local-first AI study planner and productivity suite. Gemini drafts grounded study schedules, an AI tutor answers questions with optional live web search, and a mind-map view turns notes into something navigable.",
+      features: ["Gemini-generated, grounded study schedules", "AI tutor with optional live web-search augmentation", "Interactive Markmap mind maps from notes", "Pomodoro sessions, ambient sound, 28-day consistency heatmap", "100% local-first — no cloud database"] },
+    "pageturn": { category: "Reading & Offline-First", repo: "https://github.com/theprachurya/PageTurn", live: "https://page-turn-seven.vercel.app",
+      description: "A browser-based EPUB reader, library manager, and reading-analytics application built to feel native.",
+      features: ["EPUB rendering with highlights, bookmarks, shelves, tags", "Reading sessions and statistics", "Offline caching with queued offline actions (IndexedDB)", "Cross-device sync via Supabase Realtime"] },
+    "saveur": { category: "Operations", repo: "https://github.com/theprachurya/saveur-restaurant-os", live: "https://saveur-restaurant-os.vercel.app",
+      description: "Restaurant ordering and management software with separate customer and owner workflows.",
+      features: ["Menu and cart management with order history", "Live inventory tracking with low-stock alerts", "Stock-safe checkout logic", "In-browser QA test screen for order flows"] },
+    "ai-planner": { category: "AI & Education", repo: "https://github.com/theprachurya/AI-Study-Planner", live: null,
+      description: "A full-stack study-planning application that generates personalized learning guides and schedules.",
+      features: ["Day-by-day schedules from subjects, deadlines, and hours", "Resilient JSON handling for AI output", "Repair step rebuilds the plan if output is malformed", "SQLite persistence"] },
+    "ambient": { category: "Productivity & Accessibility", repo: "https://github.com/theprachurya/Ambient-Study-Companion", live: null,
+      description: "A self-hosted focus companion built around ambient soundscapes and wellness logging.",
+      features: ["Ambient soundscapes and Pomodoro timers", "Wellness logging with CSV export", "Full keyboard navigation, text-to-speech, screen-reader support", "Docker/Podman self-hosted deployment"] },
+    "novel-tracker": { category: "Library & Tracking", repo: "https://github.com/theprachurya/web-novel-tracker", live: "https://web-novel-tracker.vercel.app",
+      description: "A lightweight tracker for web novels with automatic metadata lookup.",
+      features: ["Reading-progress tracking with status filters", "Automatic cover lookup via AniList, Jikan, Google Books", "Admin CRUD operations", "Supabase persistence"] },
+    "safar": { category: "Concept", repo: "https://github.com/theprachurya/safar", live: null,
+      description: "A train-ticket booking concept that tackles the waitlist problem directly.",
+      features: ["Recommends alternative nearby stations when waitlisted", "Preserves the rider's intended boarding point", "Concept-stage recommendation logic"] }
+  };
+
+  var $ = function (s, ctx) { return (ctx || document).querySelector(s); };
+  var $$ = function (s, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(s)); };
+
+  /* ---------------- Page routing (fixed) ---------------- */
+  var PAGES = ["cover", "work", "stack", "about", "contact"];
+  var current = null;
+  var transitionTimer = null;
+
+  function goToPage(name, skipHash) {
+    if (PAGES.indexOf(name) === -1) name = "cover";
+    if (name === current) return;
+
+    /* Cancel any pending transition cleanup to prevent race condition */
+    if (transitionTimer) {
+      clearTimeout(transitionTimer);
+      transitionTimer = null;
+      /* Force-clean all pages that aren't our target */
+      PAGES.forEach(function (p) {
+        if (p !== name) {
+          var el = $('.page[data-page="' + p + '"]');
+          if (el) el.classList.remove("show", "active");
+        }
+      });
+    }
+
+    var prev = current ? $('.page[data-page="' + current + '"]') : null;
+    var next = $('.page[data-page="' + name + '"]');
+
+    if (prev) {
+      prev.classList.remove("show");
+      var prevEl = prev;
+      transitionTimer = setTimeout(function () {
+        prevEl.classList.remove("active");
+        transitionTimer = null;
+      }, 320);
+    }
+
+    next.classList.add("active");
+    /* force reflow so the transition runs */
+    void next.offsetWidth;
+    requestAnimationFrame(function () { next.classList.add("show"); });
+
+    $$(".page-nav-row a").forEach(function (a) { a.classList.toggle("active", a.dataset.page === name); });
+    var row = $("#pageNavRow");
+    if (row.classList.contains("open")) row.classList.remove("open");
+    current = name;
+    if (!skipHash) history.pushState(null, "", "#" + name);
+    window.scrollTo({ top: 0, behavior: "instant" });
+  }
+
+  /* Scoped click handlers — only nav links, brand, and CTA buttons (not <section> pages) */
+  $$(".page-nav-row a[data-page], .brand[data-page], a.btn[data-page]").forEach(function (el) {
+    el.addEventListener("click", function (e) {
+      e.preventDefault();
+      playBeep(520);
+      goToPage(el.dataset.page);
+    });
+  });
+
+  /* Initial page load */
+  var startPage = (location.hash || "").replace("#", "");
+  goToPage(PAGES.indexOf(startPage) !== -1 ? startPage : "cover", true);
+  history.replaceState(null, "", "#" + current);
+
+  /* Handle browser back/forward */
+  window.addEventListener("popstate", function () {
+    var page = (location.hash || "").replace("#", "");
+    if (PAGES.indexOf(page) !== -1) {
+      goToPage(page, true);
+    }
+  });
+
+  $("#menuToggle").addEventListener("click", function () { $("#pageNavRow").classList.toggle("open"); });
+
+  /* ---------------- Reveal-item stagger (CSS custom properties) ---------------- */
+  $$(".page").forEach(function (page) {
+    $$(".reveal-item", page).forEach(function (el, i) {
+      el.style.setProperty("--reveal-i", i);
+    });
+  });
+
+  /* ---------------- Live clock / dateline ---------------- */
+  function updateClock() {
+    var d = new Date();
+    var date = d.toLocaleDateString("en-US", { weekday: "long", month: "long", day: "numeric" });
+    var time = d.toLocaleTimeString("en-US", { hour: "2-digit", minute: "2-digit", second: "2-digit" });
+    $("#clockLine").textContent = date + " · " + time;
+  }
+  setInterval(updateClock, 1000);
+  updateClock();
+
+  /* ---------------- Count-up ---------------- */
+  function countUp(el, target) {
+    var startTs = null, dur = 900;
+    function step(ts) {
+      if (!startTs) startTs = ts;
+      var p = Math.min((ts - startTs) / dur, 1);
+      el.textContent = Math.floor(p * target);
+      if (p < 1) requestAnimationFrame(step); else el.textContent = target;
+    }
+    requestAnimationFrame(step);
+  }
+
+  /* ---------------- Live GitHub telemetry ---------------- */
+  function syncGitHub() {
+    fetch("https://api.github.com/users/theprachurya").then(function (r) { if (!r.ok) throw new Error("rl"); return r.json(); })
+      .then(function (user) {
+        if (user.avatar_url) $("#teleAvatar").src = user.avatar_url;
+        if (user.name) $("#teleName").textContent = user.name.trim() || "Prachurya";
+        countUp($("#metricRepos"), user.public_repos || 10);
+        countUp($("#metricFollowers"), user.followers || 10);
+      })
+      .catch(function () {
+        countUp($("#metricRepos"), 10);
+        countUp($("#metricFollowers"), 10);
+      });
+  }
+  syncGitHub();
+
+  /* ---------------- Filters + search (fixed binding) ---------------- */
+  var activeFilter = "all";
+  function applyFilters() {
+    var q = $("#projectSearch").value.toLowerCase().trim();
+    var any = false;
+    $$(".project-card").forEach(function (card) {
+      var cats = (card.dataset.cat || "").split(" ");
+      var matchesCat = activeFilter === "all" || cats.indexOf(activeFilter) !== -1;
+      var text = card.querySelector("h3").textContent.toLowerCase() + " " + card.querySelector(".desc").textContent.toLowerCase() + " " + card.querySelector(".stackline").textContent.toLowerCase();
+      var matchesSearch = q === "" || text.indexOf(q) !== -1;
+      var show = matchesCat && matchesSearch;
+      card.style.display = show ? "flex" : "none";
+      if (show) any = true;
+    });
+    $("#noResults").style.display = any ? "none" : "block";
+  }
+  $$(".filter").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      $$(".filter").forEach(function (b) { b.classList.remove("active"); });
+      btn.classList.add("active");
+      activeFilter = btn.dataset.filter;
+      applyFilters();
+    });
+  });
+
+  /* Search input — bound in JS instead of inline oninput */
+  var searchInput = $("#projectSearch");
+  if (searchInput) {
+    searchInput.addEventListener("input", applyFilters);
+  }
+
+  /* ---------------- Modal inspector ---------------- */
+  var modal = $("#inspectorModal");
+  window.openInspector = function (id) {
+    var data = PROJECTS[id];
+    if (!data) return;
+    playBeep(620);
+    $("#modalCategory").textContent = data.category;
+    $("#modalTitle").textContent = $('.project-card[data-project="' + id + '"] h3').textContent;
+    $("#modalDescription").textContent = data.description;
+    var list = $("#modalFeaturesList");
+    list.innerHTML = "";
+    data.features.forEach(function (f) { var li = document.createElement("li"); li.textContent = f; list.appendChild(li); });
+    $("#modalRepoLink").href = data.repo;
+    var liveLink = $("#modalLiveLink");
+    if (data.live) { liveLink.href = data.live; liveLink.style.display = "inline-flex"; }
+    else { liveLink.style.display = "none"; }
+    modal.classList.add("open");
+    document.body.style.overflow = "hidden";
+  };
+  window.closeInspector = function () {
+    if (!modal.classList.contains("open")) return;
+    playBeep(340);
+    modal.classList.remove("open");
+    document.body.style.overflow = "";
+  };
+  window.handleBackdrop = function (e) { if (e.target === modal) closeInspector(); };
+
+  /* ---------------- Toast + clipboard ---------------- */
+  var toastTimer = null;
+  function showToast(msg) {
+    $("#toastMsg").textContent = msg;
+    $("#toast").classList.add("show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { $("#toast").classList.remove("show"); }, 2400);
+  }
+  window.copyContact = function (text) {
+    playBeep(760);
+    if (navigator.clipboard) {
+      navigator.clipboard.writeText(text).then(function () { showToast("Email copied to clipboard"); })
+        .catch(function () { window.location.href = "mailto:" + text; });
+    } else {
+      window.location.href = "mailto:" + text;
+    }
+  };
+
+  /* ---------------- Sound toggle (Web Audio beeps) ---------------- */
+  var soundOn = true, audioCtx = null;
+  function initAudio() { if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+  function playBeep(freq) {
+    if (!soundOn) return;
+    try {
+      initAudio();
+      if (audioCtx.state === "suspended") audioCtx.resume();
+      var osc = audioCtx.createOscillator(), gain = audioCtx.createGain();
+      osc.type = "sine"; osc.frequency.setValueAtTime(freq || 500, audioCtx.currentTime);
+      gain.gain.setValueAtTime(0.035, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.09);
+      osc.connect(gain); gain.connect(audioCtx.destination);
+      osc.start(); osc.stop(audioCtx.currentTime + 0.09);
+    } catch (e) {}
+  }
+  $("#soundToggle").addEventListener("click", function () {
+    soundOn = !soundOn;
+    $("#soundIcon").textContent = soundOn ? "🔊" : "🔇";
+    $("#soundState").textContent = soundOn ? "On" : "Off";
+    if (soundOn) playBeep(700);
+  });
+
+  /* ---------------- Keyboard shortcuts (fixed) ---------------- */
+  document.addEventListener("keydown", function (e) {
+    var tag = (document.activeElement.tagName || "").toLowerCase();
+    if (e.key === "Escape") {
+      /* Only close modal if it's actually open (prevents phantom beep) */
+      if (modal.classList.contains("open")) closeInspector();
+      return;
+    }
+    if (tag === "input" || tag === "textarea") return;
+    if (e.key === "/") { e.preventDefault(); goToPage("work"); $("#projectSearch").focus(); return; }
+    var map = { "1": "cover", "2": "work", "3": "stack", "4": "about", "5": "contact" };
+    if (map[e.key]) goToPage(map[e.key]);
+  });
+
+  /* ---------------- Print ---------------- */
+  $("#printBtn").addEventListener("click", function () { window.print(); });
+
+  window.applyFilters = applyFilters;
+})();
+</script>
+
+</body>
+</html>
