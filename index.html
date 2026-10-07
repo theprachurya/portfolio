@@ -3,10 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prachurya — Full-Stack &amp; AI Engineering, A Digital Edition</title>
-<meta name="description" content="Prachurya — Computer Science &amp; Engineering (AI &amp; ML) undergraduate at SRM Institute of Science and Technology, building full-stack and AI-assisted software.">
-<meta property="og:title" content="Prachurya — Full-Stack &amp; AI Engineering">
-<meta property="og:description" content="Seven shipped projects, one developer, presented as a paginated digital edition.">
+<meta name="theme-color" content="#f4f7f4">
+<title>Prachurya — Software Engineering Portfolio</title>
+<meta name="description" content="Prachurya is a Computer Science and Engineering student at SRM IST, building useful web applications and full-stack software.">
+<meta property="og:title" content="Prachurya — Software Engineering Portfolio">
+<meta property="og:description" content="Selected software projects, engineering tools, and ways to get in touch.">
 <meta property="og:image" content="https://github.com/theprachurya.png">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%2318160f'/%3E%3Ctext x='50' y='70' font-size='60' text-anchor='middle' fill='%23f0b800' font-family='Georgia,serif'%3EP%3C/text%3E%3C/svg%3E">
 
@@ -26,22 +27,22 @@
   button { cursor: pointer; background: none; border: none; }
 
   :root {
-    --paper: #f6f1e6;
-    --paper-alt: #efe7d5;
-    --card: #fffdf7;
-    --ink: #18160f;
-    --ink-soft: #423e33;
-    --muted: #726c5c;
-    --rule: #18160f;
-    --rule-faint: #ddd3ba;
-    --terracotta: #c94f30;
-    --terracotta-dark: #a53f26;
-    --teal: #0d6b68;
-    --gold: #ecb100;
-    --dark-panel: #17150f;
-    --dark-panel-2: #211d14;
-    --shadow: 0 20px 55px rgba(35, 26, 12, .16);
-    --shadow-lift: 0 28px 65px rgba(35, 26, 12, .2);
+    --paper: #f4f7f4;
+    --paper-alt: #e7eee8;
+    --card: #fcfefc;
+    --ink: #15211b;
+    --ink-soft: #35473d;
+    --muted: #66766c;
+    --rule: #15211b;
+    --rule-faint: #cbd8ce;
+    --terracotta: #11745c;
+    --terracotta-dark: #0d5948;
+    --teal: #146d79;
+    --gold: #cce98c;
+    --dark-panel: #14201a;
+    --dark-panel-2: #1c2b22;
+    --shadow: 0 20px 55px rgba(20, 43, 30, .12);
+    --shadow-lift: 0 28px 65px rgba(20, 43, 30, .16);
     --font-display: 'Fraunces', Georgia, serif;
     --font-body: 'Inter', system-ui, -apple-system, sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
@@ -65,7 +66,7 @@
 
   /* ---------- Masthead ---------- */
   header.masthead {
-    position: sticky; top: 0; z-index: 60; background: rgba(246, 241, 230, .92);
+    position: sticky; top: 0; z-index: 60; background: rgba(244, 247, 244, .94);
     backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-bottom: 1px solid var(--rule);
   }
   .mast-row { height: 76px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
@@ -204,6 +205,7 @@
     will-change: transform;
   }
   .project-card:hover { transform: translateY(-6px) scale(1.012); box-shadow: var(--shadow-lift); border-color: var(--rule); }
+  .project-card:focus-visible { outline: 3px solid var(--terracotta); outline-offset: 4px; }
   .project-card:active { transform: translateY(-2px) scale(.995); }
   .project-card.featured { grid-column: 1 / -1; background: var(--dark-panel); color: #efeadd; border-color: var(--dark-panel); min-height: 200px; }
   .project-card.featured .tagline, .project-card.featured .stackline { color: #a9a291; }
@@ -357,9 +359,9 @@
   <section class="page" data-page="cover" id="cover">
     <div class="wrap cover-grid">
       <div class="reveal-item">
-        <p class="page-kicker">A Digital Edition</p>
-        <h1 class="headline">Full-stack software — with the <span class="hl">AI built in</span>, not bolted on.</h1>
-        <p class="lede">Prachurya is a Computer Science &amp; Engineering (AI &amp; ML) undergraduate at SRM Institute of Science and Technology who spends most of his time outside class shipping complete software alone — frontend, backend, database, and the AI layer in between. Seven public repositories cover everything from a local-first study planner to a restaurant operations system, several skipping the cloud database entirely, by design.</p>
+        <p class="page-kicker">Software Engineering · SRM IST</p>
+        <h1 class="headline">Building software that turns <span class="hl">real workflows</span> into clear, useful products.</h1>
+        <p class="lede">I’m Prachurya, a Computer Science and Engineering student at SRM Institute of Science and Technology. I build and maintain full-stack products across reading, study planning, and operations — with care for the details between a polished interface and dependable data.</p>
         <div class="hero-ctas">
           <a href="#work" data-page="work" class="btn btn-fill">Browse the work →</a>
           <a href="#contact" data-page="contact" class="btn btn-line">Get in touch</a>
@@ -380,8 +382,8 @@
         </div>
         <div class="tele-terminal">
           <div><span class="p">$</span> status --current</div>
-          <div>→ focus: <span class="v">AI-assisted, local-first software</span></div>
-          <div>→ stack: <span class="v">Next.js / Flask / Supabase / Gemini</span></div>
+          <div>→ focus: <span class="v">Useful, reliable software</span></div>
+          <div>→ stack: <span class="v">Next.js / React / Flask / Supabase</span></div>
           <div>→ base: <span class="v">SRM Institute of Science &amp; Technology</span></div>
         </div>
         <div class="tele-status"><span class="beacon"></span> Live &amp; building</div>
@@ -395,13 +397,12 @@
       <div class="reveal-item">
         <p class="page-kicker">Page One</p>
         <h2 class="page-title">Selected work</h2>
-        <p class="page-intro">Seven repositories, cross-checked against the live GitHub profile — nothing here is invented. Filter by category or search directly.</p>
+        <p class="page-intro">A selection of current public projects. Filter by type or search for a project directly.</p>
       </div>
 
       <div class="controls-row reveal-item">
         <div class="filters" id="filters">
-          <button class="filter active" data-filter="all">All (7)</button>
-          <button class="filter" data-filter="ai">AI &amp; ML</button>
+          <button class="filter active" data-filter="all">All (6)</button>
           <button class="filter" data-filter="fullstack">Full-Stack</button>
           <button class="filter" data-filter="concept">Concept</button>
         </div>
@@ -411,19 +412,19 @@
       </div>
 
       <div class="projects-grid reveal-item" id="projectGrid">
-        <article class="project-card featured" data-cat="ai fullstack" data-project="study-quest" onclick="openInspector('study-quest')">
-          <div class="tagline">Featured · AI &amp; Productivity</div>
+        <article class="project-card featured" data-cat="fullstack" data-project="study-quest" onclick="openInspector('study-quest')">
+          <div class="tagline">Featured · Study Planning</div>
           <h3>Study Quest</h3>
-          <p class="stackline">Next.js 16 · TypeScript · Gemini · RAG · Tailwind</p>
-          <p class="desc">A 100%-local-first AI study planner. Gemini drafts the schedule, an AI tutor answers questions with optional live web search, and a mind-map view turns notes into something navigable.</p>
-          <div class="card-bottom"><div class="tags"><span>Local-first</span><span>No cloud DB</span></div><span class="card-arrow">↗</span></div>
+          <p class="stackline">Next.js 16 · TypeScript · MongoDB · Tailwind</p>
+          <p class="desc">A study planner that turns subjects, exam dates, priorities, and chapters into a schedule, with notebooks, focus sessions, and progress views in one place.</p>
+          <div class="card-bottom"><div class="tags"><span>Vercel-ready</span><span>Study tools</span></div><span class="card-arrow">↗</span></div>
         </article>
 
         <article class="project-card" data-cat="fullstack" data-project="pageturn" onclick="openInspector('pageturn')">
           <div class="tagline">Reading &amp; Offline-First</div>
           <h3>PageTurn</h3>
           <p class="stackline">Next.js · React · Supabase · epub.js · PWA</p>
-          <p class="desc">A browser-based EPUB reader built to feel native — highlights, bookmarks, shelves, offline caching, and cross-device sync.</p>
+          <p class="desc">A browser-based EPUB reader and library with reading progress, highlights, bookmarks, collections, offline access, and cross-device sync.</p>
           <div class="card-bottom"><div class="tags"><span>Live</span></div><span class="card-arrow">↗</span></div>
         </article>
 
@@ -433,14 +434,6 @@
           <p class="stackline">JavaScript · Supabase · Vercel</p>
           <p class="desc">Restaurant ordering &amp; management software with separate customer/owner workflows and live inventory tracking.</p>
           <div class="card-bottom"><div class="tags"><span>Live</span></div><span class="card-arrow">↗</span></div>
-        </article>
-
-        <article class="project-card" data-cat="ai fullstack" data-project="ai-planner" onclick="openInspector('ai-planner')">
-          <div class="tagline">AI &amp; Education</div>
-          <h3>AI Study Planner</h3>
-          <p class="stackline">Python · Flask · SQLite · Gemini</p>
-          <p class="desc">Turns subjects, deadlines, and hours into a day-by-day schedule, with a repair step for malformed AI output.</p>
-          <div class="card-bottom"><div class="tags"><span>Repo only</span></div><span class="card-arrow">↗</span></div>
         </article>
 
         <article class="project-card" data-cat="fullstack" data-project="ambient" onclick="openInspector('ambient')">
@@ -489,8 +482,8 @@
           <div class="pill-wrap"><span class="pill">Next.js</span><span class="pill">React</span><span class="pill">Flask</span><span class="pill">Node.js</span><span class="pill">Vite</span><span class="pill">Tailwind CSS</span></div>
         </div>
         <div class="stack-panel">
-          <h4>Data, AI &amp; Infrastructure</h4>
-          <div class="pill-wrap"><span class="pill">PostgreSQL</span><span class="pill">SQLite</span><span class="pill">Supabase</span><span class="pill">Google Gemini</span><span class="pill">RAG</span><span class="pill">Docker</span><span class="pill">Vercel</span><span class="pill">Linux &amp; Git</span></div>
+          <h4>Data &amp; Infrastructure</h4>
+          <div class="pill-wrap"><span class="pill">PostgreSQL</span><span class="pill">MongoDB</span><span class="pill">SQLite</span><span class="pill">Supabase</span><span class="pill">Docker</span><span class="pill">Vercel</span><span class="pill">Linux &amp; Git</span></div>
         </div>
       </div>
     </div>
@@ -505,15 +498,15 @@
       </div>
       <div class="about-grid reveal-item">
         <div>
-          <p>Prachurya studies Computer Science &amp; Engineering with a focus on AI &amp; Machine Learning at SRM Institute of Science and Technology. Outside coursework, the practice stays consistent: pick a real, specific problem, then build the entire stack around it — frontend, backend, persistence, and increasingly an AI layer that does actual work rather than window dressing.</p>
+          <p>Prachurya studies Computer Science &amp; Engineering at SRM Institute of Science and Technology. Outside coursework, the practice stays consistent: pick a real, specific problem, then build the full product around it — interface, application logic, persistence, and deployment.</p>
 
           <div class="principle">
-            <h5>Local-first where it matters</h5>
-            <p>Cloud dependencies add latency and lock-in. Study Quest and Ambient Study Companion keep data on-device or self-hosted rather than defaulting to a cloud database.</p>
+            <h5>Persistence that fits the product</h5>
+            <p>Study Quest keeps local development simple and uses shared database storage when hosted. PageTurn combines IndexedDB caching with account sync for reading across devices.</p>
           </div>
           <div class="principle">
-            <h5>Resilient AI integration</h5>
-            <p>LLM output is non-deterministic. AI Study Planner includes a repair step that rebuilds the plan when Gemini's response comes back malformed, instead of failing outright.</p>
+            <h5>Useful fallback paths</h5>
+            <p>When a service is unavailable, the product should still guide the user. Study Quest can create a balanced schedule from saved subjects and study preferences without an external generation service.</p>
           </div>
           <div class="principle">
             <h5>End-to-end ownership</h5>
@@ -555,8 +548,8 @@
 </main>
 
 <footer class="site-footer wrap">
-  <span>Prachurya — Digital Edition · Est. 2020</span>
-  <button type="button" id="printBtn">Print full edition</button>
+  <span>PRACHURYA · SOFTWARE ENGINEERING · 2026</span>
+  <button type="button" id="printBtn">Print portfolio</button>
 </footer>
 
 <!-- ===== Modal ===== -->
@@ -588,18 +581,15 @@
 
   /* ---------------- Data (verified) ---------------- */
   var PROJECTS = {
-    "study-quest": { category: "AI & Productivity", repo: "https://github.com/theprachurya/study-quest", live: null,
-      description: "A 100%-local-first AI study planner and productivity suite. Gemini drafts grounded study schedules, an AI tutor answers questions with optional live web search, and a mind-map view turns notes into something navigable.",
-      features: ["Gemini-generated, grounded study schedules", "AI tutor with optional live web-search augmentation", "Interactive Markmap mind maps from notes", "Pomodoro sessions, ambient sound, 28-day consistency heatmap", "100% local-first — no cloud database"] },
+    "study-quest": { category: "Study Planning", repo: "https://github.com/theprachurya/study-quest", live: null,
+      description: "A notebook-centered study planner that turns a learning goal into a dated schedule and keeps focus sessions and progress in the same workspace.",
+      features: ["Subject priorities, exam dates, and chapter-level planning", "Schedule, learning guide, and repair flow", "Notebook Q&A and interactive mind maps", "Focus timer, journal, and study streaks", "Local development with MongoDB persistence for hosted deployments"] },
     "pageturn": { category: "Reading & Offline-First", repo: "https://github.com/theprachurya/PageTurn", live: "https://page-turn-seven.vercel.app",
       description: "A browser-based EPUB reader, library manager, and reading-analytics application built to feel native.",
-      features: ["EPUB rendering with highlights, bookmarks, shelves, tags", "Reading sessions and statistics", "Offline caching with queued offline actions (IndexedDB)", "Cross-device sync via Supabase Realtime"] },
+      features: ["EPUB rendering with highlights, bookmarks, shelves, and tags", "Reading sessions and statistics", "Offline caching and queued offline actions", "Cross-device sync via Supabase Realtime", "Upload retries and cleanup for failed library imports"] },
     "saveur": { category: "Operations", repo: "https://github.com/theprachurya/saveur-restaurant-os", live: "https://saveur-restaurant-os.vercel.app",
       description: "Restaurant ordering and management software with separate customer and owner workflows.",
       features: ["Menu and cart management with order history", "Live inventory tracking with low-stock alerts", "Stock-safe checkout logic", "In-browser QA test screen for order flows"] },
-    "ai-planner": { category: "AI & Education", repo: "https://github.com/theprachurya/AI-Study-Planner", live: null,
-      description: "A full-stack study-planning application that generates personalized learning guides and schedules.",
-      features: ["Day-by-day schedules from subjects, deadlines, and hours", "Resilient JSON handling for AI output", "Repair step rebuilds the plan if output is malformed", "SQLite persistence"] },
     "ambient": { category: "Productivity & Accessibility", repo: "https://github.com/theprachurya/Ambient-Study-Companion", live: null,
       description: "A self-hosted focus companion built around ambient soundscapes and wellness logging.",
       features: ["Ambient soundscapes and Pomodoro timers", "Wellness logging with CSV export", "Full keyboard navigation, text-to-speech, screen-reader support", "Docker/Podman self-hosted deployment"] },
@@ -613,6 +603,18 @@
 
   var $ = function (s, ctx) { return (ctx || document).querySelector(s); };
   var $$ = function (s, ctx) { return Array.prototype.slice.call((ctx || document).querySelectorAll(s)); };
+
+  $$(".project-card[data-project]").forEach(function (card) {
+    card.setAttribute("role", "button");
+    card.setAttribute("tabindex", "0");
+    card.setAttribute("aria-label", "View project details: " + card.querySelector("h3").textContent.trim());
+    card.addEventListener("keydown", function (event) {
+      if ((event.key === "Enter" || event.key === " ") && !event.repeat) {
+        event.preventDefault();
+        window.openInspector(card.dataset.project);
+      }
+    });
+  });
 
   /* ---------------- Page routing (fixed) ---------------- */
   var PAGES = ["cover", "work", "stack", "about", "contact"];
