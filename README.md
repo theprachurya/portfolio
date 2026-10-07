@@ -1,6 +1,6 @@
 # Prachurya's Portfolio
 
-A responsive, static portfolio for selected software projects, product engineering approach, and contact links. PageTurn is the featured project.
+A responsive, static portfolio for selected software projects, product engineering approach, and contact links. PageTurn is the featured project. Motion includes a staggered hero entrance, scroll reveals, and subtle hover feedback, with reduced-motion support and no runtime dependencies.
 
 ## Run locally
 

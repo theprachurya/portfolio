@@ -27,9 +27,14 @@
     .approach{border-block:1px solid var(--line);background:#e9e9df}.approach-grid{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid #cfd3c8}.approach-item{padding:25px 26px 12px 0}.approach-item+.approach-item{padding-left:26px;border-left:1px solid #cfd3c8}.approach-number,.about-label{color:#78836c;font:500 .66rem/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase}.approach-item h3{margin:15px 0 9px;font:600 1.22rem/1.2 var(--display)}.approach-item p{max-width:340px;margin:0;color:#5e665a;font-size:.88rem}
     .about-grid{display:grid;grid-template-columns:.7fr 1.3fr;gap:clamp(38px,9vw,120px)}.about-label{color:var(--muted)}.about-copy h2{max-width:730px;margin:0 0 22px;font:600 clamp(2.2rem,4.6vw,3.7rem)/1.03 var(--display);letter-spacing:-.06em}.about-copy>p{max-width:720px;margin:0 0 16px;color:#5d665c;font-size:1rem}.stack-groups{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:35px;padding-top:25px;border-top:1px solid var(--line)}.stack-group h3{margin:0 0 13px;color:#717a6e;font:500 .65rem/1.4 var(--mono);letter-spacing:.08em;text-transform:uppercase}.stack-group p{margin:0;color:#323a32;font-size:.83rem;line-height:1.9}
     .contact-section{padding-block:18px 30px}.contact-panel{position:relative;display:flex;align-items:end;justify-content:space-between;gap:34px;overflow:hidden;padding:clamp(30px,6vw,68px);border-radius:22px;color:#f5f3e9;background:var(--forest)}.contact-panel::after{position:absolute;top:-125px;right:16%;width:250px;height:250px;border:1px solid #d7f36a47;border-radius:50%;content:""}.contact-copy,.contact-actions{position:relative;z-index:1}.contact-copy .eyebrow{color:var(--acid)}.contact-copy h2{max-width:690px;margin:14px 0 13px;font:600 clamp(2.2rem,5.6vw,4.8rem)/.99 var(--display);letter-spacing:-.065em}.contact-copy p{max-width:530px;margin:0;color:#c2cbc0}.contact-actions{display:flex;flex-wrap:wrap;gap:10px}.contact-actions .button-secondary{border-color:#ffffff45}.footer{padding-block:24px 34px}.footer-inner{display:flex;align-items:center;justify-content:space-between;gap:16px;color:#727b70;font:400 .66rem/1.5 var(--mono)}.footer-links{display:flex;gap:18px}.footer-links a:hover{color:var(--ink)}
+    @keyframes enter-soft{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+    @keyframes reader-drift{0%,100%{transform:rotate(-2deg) translateY(0)}50%{transform:rotate(-1deg) translateY(-5px)}}
+    .hero-copy>*{animation:enter-soft .72s cubic-bezier(.2,.75,.25,1) both}.hero-copy>*:nth-child(2){animation-delay:.08s}.hero-copy>*:nth-child(3){animation-delay:.16s}.hero-copy>*:nth-child(4){animation-delay:.24s}.hero-copy>*:nth-child(5){animation-delay:.32s}.hero .poster{animation:enter-soft .9s cubic-bezier(.2,.75,.25,1) .2s both}.poster-arrow{transition:transform .35s cubic-bezier(.2,.75,.25,1)}.poster:hover .poster-arrow{transform:rotate(0)}
+    html.motion-ready [data-reveal]{opacity:0;transform:translateY(22px);transition:opacity .68s cubic-bezier(.2,.75,.25,1),transform .68s cubic-bezier(.2,.75,.25,1)}html.motion-ready [data-reveal].is-visible{opacity:1;transform:translateY(0)}html.motion-ready .project:nth-child(2),html.motion-ready .approach-item:nth-child(2){transition-delay:.08s}html.motion-ready .project:nth-child(3),html.motion-ready .approach-item:nth-child(3){transition-delay:.16s}html.motion-ready .project:nth-child(4){transition-delay:.08s}html.motion-ready .project:nth-child(5){transition-delay:.16s}html.motion-ready .project:nth-child(6){transition-delay:.24s}
+    .reader-window{animation:reader-drift 6s ease-in-out infinite}.button,.project,.nav a,.project-links a,.footer-links a{transition-timing-function:cubic-bezier(.2,.75,.25,1)}.project:focus-within{transform:translateY(-3px);border-color:#aeb6a6;box-shadow:0 18px 35px #1d261d12}.nav a,.project-links a,.footer-links a{transition:color .2s ease}
     @media(max-width:900px){.hero-grid{grid-template-columns:minmax(0,1.1fr) minmax(250px,.9fr);gap:40px}.poster{min-height:315px}.feature{grid-template-columns:1fr}.reader-stage{min-height:330px}}
     @media(max-width:680px){.wrap{width:min(var(--max),calc(100% - 34px))}.header-inner{min-height:72px;flex-wrap:wrap;gap:10px 18px;padding-block:12px}.nav{width:100%;justify-content:space-between;gap:12px;padding-top:10px;border-top:1px solid #ffffff20}.nav a{font-size:.76rem}.nav .nav-cta{padding:7px 11px}.hero-grid{grid-template-columns:1fr}.hero h1{max-width:620px;font-size:clamp(3.2rem,13vw,5.6rem)}.poster{min-height:260px}.poster-mark{font-size:7rem}.section-head{align-items:start;flex-direction:column;gap:14px;margin-bottom:28px}.feature{padding:24px;border-radius:20px}.feature-points{grid-template-columns:1fr;gap:8px}.reader-stage{min-height:285px;padding:14px}.reader-content{grid-template-columns:84px 1fr;min-height:210px}.book-cover{margin:13px 0 13px 13px}.book-page{padding:17px 14px 12px}.project-grid{grid-template-columns:1fr}.project{min-height:240px;padding:22px}.approach-grid{grid-template-columns:1fr}.approach-item,.approach-item+.approach-item{padding:20px 0;border-left:0}.approach-item+.approach-item{border-top:1px solid #cfd3c8}.about-grid{grid-template-columns:1fr;gap:18px}.stack-groups{grid-template-columns:1fr;gap:19px}.contact-panel{align-items:start;flex-direction:column}.footer-inner{align-items:start;flex-direction:column}}
-    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;transition-duration:.01ms!important}}
+    @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}html.motion-ready [data-reveal]{opacity:1;transform:none}}
   </style>
 </head>
 <body>
@@ -43,7 +48,7 @@
   <main id="main">
     <section class="hero" id="top" aria-labelledby="hero-title">
       <div class="wrap hero-grid">
-        <div>
+        <div class="hero-copy">
           <p class="eyebrow">Software engineering · SRM IST</p>
           <h1 id="hero-title">Useful software.<br><em>Built all the way through.</em></h1>
           <p class="hero-lede">I’m Prachurya, a Computer Science and Engineering student who builds full-stack products for reading, learning, and everyday operations. I care about the details that make software clear, dependable, and worth returning to.</p>
@@ -60,8 +65,8 @@
 
     <section class="section work" id="work" aria-labelledby="work-title">
       <div class="wrap">
-        <div class="section-head"><div><span class="index">Selected work · 01—06</span><p class="eyebrow section-kicker">A few things I’ve made</p><h2 id="work-title">Products with a job to do.</h2></div><p class="aside">From the first interface to the data model and deployment, these projects are built to work as complete products.</p></div>
-        <article class="feature" id="pageturn" aria-labelledby="pageturn-title">
+        <div class="section-head" data-reveal><div><span class="index">Selected work · 01—06</span><p class="eyebrow section-kicker">A few things I’ve made</p><h2 id="work-title">Products with a job to do.</h2></div><p class="aside">From the first interface to the data model and deployment, these projects are built to work as complete products.</p></div>
+        <article class="feature" id="pageturn" aria-labelledby="pageturn-title" data-reveal>
           <div class="feature-copy">
             <p class="eyebrow">Featured project · Reading</p><h3 id="pageturn-title">PageTurn</h3>
             <p>A personal EPUB library and reader designed for focused reading, with progress, notes, and access that holds up when you go offline.</p>
@@ -76,26 +81,26 @@
         </article>
 
         <div class="project-grid">
-          <article class="project"><div class="project-top"><span class="project-number">02 / 06</span><span class="project-type">Study planning</span></div><h3>Study Quest</h3><p>A study workspace for exam-aware plans, subject notebooks, focused sessions, and progress over time.</p><span class="project-stack">NEXT.JS · TYPESCRIPT · MONGODB</span><div class="project-links"><a href="https://github.com/theprachurya/study-quest" target="_blank" rel="noopener noreferrer">Source code ↗</a></div></article>
-          <article class="project"><div class="project-top"><span class="project-number">03 / 06</span><span class="project-type">Restaurant operations</span></div><h3>Saveur Restaurant OS</h3><p>Ordering and management software for customers and owners, with live inventory and stock-aware checkout.</p><span class="project-stack">JAVASCRIPT · SUPABASE · VERCEL</span><div class="project-links"><a href="https://saveur-restaurant-os.vercel.app" target="_blank" rel="noopener noreferrer">Live site ↗</a><a href="https://github.com/theprachurya/saveur-restaurant-os" target="_blank" rel="noopener noreferrer">Source code ↗</a></div></article>
-          <article class="project"><div class="project-top"><span class="project-number">04 / 06</span><span class="project-type">Focus & accessibility</span></div><h3>Ambient Study Companion</h3><p>A self-hosted focus companion with ambient sound, Pomodoro sessions, and wellness logging.</p><span class="project-stack">PYTHON · FLASK · DOCKER</span><div class="project-links"><a href="https://github.com/theprachurya/Ambient-Study-Companion" target="_blank" rel="noopener noreferrer">Source code ↗</a></div></article>
-          <article class="project"><div class="project-top"><span class="project-number">05 / 06</span><span class="project-type">Reading tracker</span></div><h3>Web Novel Tracker</h3><p>A lightweight tracker for web novels with reading status, metadata lookup, and a personal library.</p><span class="project-stack">VITE · JAVASCRIPT · SUPABASE</span><div class="project-links"><a href="https://web-novel-tracker.vercel.app" target="_blank" rel="noopener noreferrer">Live site ↗</a><a href="https://github.com/theprachurya/web-novel-tracker" target="_blank" rel="noopener noreferrer">Source code ↗</a></div></article>
-          <article class="project"><div class="project-top"><span class="project-number">06 / 06</span><span class="project-type">Product concept</span></div><h3>Safar</h3><p>A train-ticket concept that suggests nearby alternatives when a route is waitlisted while preserving the intended boarding point.</p><span class="project-stack">JAVA · ROUTE RECOMMENDATION</span><div class="project-links"><a href="https://github.com/theprachurya/safar" target="_blank" rel="noopener noreferrer">Source code ↗</a></div></article>
+          <article class="project" data-reveal><div class="project-top"><span class="project-number">02 / 06</span><span class="project-type">Study planning</span></div><h3>Study Quest</h3><p>A study workspace for exam-aware plans, subject notebooks, focused sessions, and progress over time.</p><span class="project-stack">NEXT.JS · TYPESCRIPT · MONGODB</span><div class="project-links"><a href="https://github.com/theprachurya/study-quest" target="_blank" rel="noopener noreferrer">Source code ↗</a></div></article>
+          <article class="project" data-reveal><div class="project-top"><span class="project-number">03 / 06</span><span class="project-type">Restaurant operations</span></div><h3>Saveur Restaurant OS</h3><p>Ordering and management software for customers and owners, with live inventory and stock-aware checkout.</p><span class="project-stack">JAVASCRIPT · SUPABASE · VERCEL</span><div class="project-links"><a href="https://saveur-restaurant-os.vercel.app" target="_blank" rel="noopener noreferrer">Live site ↗</a><a href="https://github.com/theprachurya/saveur-restaurant-os" target="_blank" rel="noopener noreferrer">Source code ↗</a></div></article>
+          <article class="project" data-reveal><div class="project-top"><span class="project-number">04 / 06</span><span class="project-type">Focus & accessibility</span></div><h3>Ambient Study Companion</h3><p>A self-hosted focus companion with ambient sound, Pomodoro sessions, and wellness logging.</p><span class="project-stack">PYTHON · FLASK · DOCKER</span><div class="project-links"><a href="https://github.com/theprachurya/Ambient-Study-Companion" target="_blank" rel="noopener noreferrer">Source code ↗</a></div></article>
+          <article class="project" data-reveal><div class="project-top"><span class="project-number">05 / 06</span><span class="project-type">Reading tracker</span></div><h3>Web Novel Tracker</h3><p>A lightweight tracker for web novels with reading status, metadata lookup, and a personal library.</p><span class="project-stack">VITE · JAVASCRIPT · SUPABASE</span><div class="project-links"><a href="https://web-novel-tracker.vercel.app" target="_blank" rel="noopener noreferrer">Live site ↗</a><a href="https://github.com/theprachurya/web-novel-tracker" target="_blank" rel="noopener noreferrer">Source code ↗</a></div></article>
+          <article class="project" data-reveal><div class="project-top"><span class="project-number">06 / 06</span><span class="project-type">Product concept</span></div><h3>Safar</h3><p>A train-ticket concept that suggests nearby alternatives when a route is waitlisted while preserving the intended boarding point.</p><span class="project-stack">JAVA · ROUTE RECOMMENDATION</span><div class="project-links"><a href="https://github.com/theprachurya/safar" target="_blank" rel="noopener noreferrer">Source code ↗</a></div></article>
         </div>
       </div>
     </section>
 
     <section class="section approach" id="approach" aria-labelledby="approach-title"><div class="wrap">
-      <div class="section-head"><div><p class="eyebrow section-kicker">How I work</p><h2 id="approach-title">Care for the part between idea and everyday use.</h2></div><p class="aside">Good product work is a series of small, deliberate decisions—especially after the first release.</p></div>
+      <div class="section-head" data-reveal><div><p class="eyebrow section-kicker">How I work</p><h2 id="approach-title">Care for the part between idea and everyday use.</h2></div><p class="aside">Good product work is a series of small, deliberate decisions—especially after the first release.</p></div>
       <div class="approach-grid">
-        <article class="approach-item"><span class="approach-number">01 / Understand</span><h3>Start with the workflow</h3><p>Find the real friction, then shape the interface around what people are already trying to do.</p></article>
-        <article class="approach-item"><span class="approach-number">02 / Build</span><h3>Make the whole system fit</h3><p>Connect the UI, application logic, storage, and integrations so the experience feels coherent.</p></article>
-        <article class="approach-item"><span class="approach-number">03 / Improve</span><h3>Keep it dependable</h3><p>Handle the awkward edges—slow networks, empty states, recovery paths, and future maintenance.</p></article>
+        <article class="approach-item" data-reveal><span class="approach-number">01 / Understand</span><h3>Start with the workflow</h3><p>Find the real friction, then shape the interface around what people are already trying to do.</p></article>
+        <article class="approach-item" data-reveal><span class="approach-number">02 / Build</span><h3>Make the whole system fit</h3><p>Connect the UI, application logic, storage, and integrations so the experience feels coherent.</p></article>
+        <article class="approach-item" data-reveal><span class="approach-number">03 / Improve</span><h3>Keep it dependable</h3><p>Handle the awkward edges—slow networks, empty states, recovery paths, and future maintenance.</p></article>
       </div>
     </div></section>
 
     <section class="section" id="about" aria-labelledby="about-title"><div class="wrap about-grid">
-      <p class="about-label">A little about me</p><div class="about-copy">
+      <p class="about-label" data-reveal>A little about me</p><div class="about-copy" data-reveal>
         <h2 id="about-title">I like making complicated things feel straightforward.</h2>
         <p>I’m studying Computer Science and Engineering at SRM Institute of Science and Technology. Alongside coursework, I build and maintain full-stack projects across reading, study planning, and operations.</p>
         <p>I enjoy moving between product details and engineering fundamentals: interaction design, data models, offline behavior, accessibility, and deployment all matter to the finished experience.</p>
@@ -107,12 +112,28 @@
       </div>
     </div></section>
 
-    <section class="contact-section" id="contact" aria-labelledby="contact-title"><div class="wrap"><div class="contact-panel">
+    <section class="contact-section" id="contact" aria-labelledby="contact-title"><div class="wrap"><div class="contact-panel" data-reveal>
       <div class="contact-copy"><p class="eyebrow">Contact</p><h2 id="contact-title">Have a good problem to solve?</h2><p>I’m always glad to talk about thoughtful products, useful engineering, and interesting work.</p></div>
       <div class="contact-actions"><a class="button button-primary" href="mailto:prachurya119@gmail.com">Email me ↗</a><a class="button button-secondary" href="https://github.com/theprachurya" target="_blank" rel="noopener noreferrer">GitHub ↗</a><a class="button button-secondary" href="https://in.linkedin.com/in/prachurya" target="_blank" rel="noopener noreferrer">LinkedIn ↗</a></div>
     </div></div></section>
   </main>
   <footer class="footer"><div class="wrap footer-inner"><span>© <span id="year">2026</span> Prachurya · Built with care.</span><div class="footer-links"><a href="#top">Back to top ↑</a><a href="https://github.com/theprachurya" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div></footer>
-  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (!reduceMotion && "IntersectionObserver" in window) {
+      document.documentElement.classList.add("motion-ready");
+      var revealObserver = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          entry.target.classList.toggle("is-visible", entry.isIntersecting);
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -6% 0px" });
+
+      document.querySelectorAll("[data-reveal]").forEach(function (element) {
+        revealObserver.observe(element);
+      });
+    }
+  </script>
 </body>
 </html>
