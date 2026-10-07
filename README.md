@@ -1,6 +1,6 @@
 # Prachurya's Portfolio
 
-A responsive, static portfolio site that presents selected software projects, engineering tools, background, and contact links.
+A responsive, static portfolio for selected software projects, product engineering approach, and contact links. PageTurn is the featured project.
 
 ## Run locally
 
@@ -14,4 +14,4 @@ Then visit [http://localhost:8000](http://localhost:8000).
 
 ## Publish
 
-The repository deploys to GitHub Pages from `master` with the workflow in `.github/workflows/static.yml`. It serves the repository root as-is; no package installation or build step is required. Update project cards and their matching entries in the `PROJECTS` object in `index.html` together so the search, filters, and detail dialog stay in sync.
+The repository deploys to GitHub Pages from `master` with the workflow in `.github/workflows/static.yml`. It serves the repository root as-is; no package installation or build step is required. Project links and copy live directly in `index.html`.
