@@ -4,6 +4,21 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="theme-color" content="#17201b">
+  <script>
+    (function () {
+      var theme = "light";
+      try {
+        var savedTheme = localStorage.getItem("prachurya.portfolio-theme.v1");
+        theme = savedTheme === "light" || savedTheme === "dark"
+          ? savedTheme
+          : (window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      } catch (error) {
+        theme = "light";
+      }
+      document.documentElement.dataset.theme = theme;
+      document.documentElement.style.colorScheme = theme;
+    }());
+  </script>
   <meta name="description" content="Prachurya is a software engineer and CSE student building useful, dependable web products. Explore PageTurn and selected full-stack projects.">
   <meta property="og:title" content="Prachurya — Software Engineer">
   <meta property="og:description" content="Useful software, built all the way through. Selected projects by Prachurya.">
@@ -35,13 +50,48 @@
     @media(max-width:680px){.wrap{width:min(var(--max),calc(100% - 34px))}.header-inner{min-height:72px;flex-wrap:wrap;gap:10px 18px;padding-block:12px}.nav{width:100%;justify-content:space-between;gap:12px;padding-top:10px;border-top:1px solid #ffffff20}.nav a{font-size:.76rem}.nav .nav-cta{padding:7px 11px}.hero h1{max-width:620px;font-size:clamp(3.2rem,13vw,5.6rem)}.section-head{align-items:start;flex-direction:column;gap:14px;margin-bottom:28px}.feature{padding:24px;border-radius:20px}.feature-points{grid-template-columns:1fr;gap:8px}.reader-stage{min-height:285px;padding:14px}.reader-content{grid-template-columns:84px 1fr;min-height:210px}.book-cover{margin:13px 0 13px 13px}.book-page{padding:17px 14px 12px}.project-grid{grid-template-columns:1fr}.project{min-height:240px;padding:22px}.github-card{padding:20px}.github-stats{gap:8px}.github-stat{padding:13px}.github-stat strong{font-size:1.65rem}.github-recent{grid-template-columns:1fr;gap:18px}.github-repos{grid-template-columns:1fr}.about-grid{grid-template-columns:1fr;gap:18px}.about-profile{width:min(100%,320px);aspect-ratio:1;margin-bottom:12px}.stack-groups{grid-template-columns:1fr;gap:19px}.contact-panel{align-items:start;flex-direction:column}.contact-actions{width:min(100%,350px)}.footer-inner{align-items:start;flex-direction:column}}
     @media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;animation-iteration-count:1!important;transition-duration:.01ms!important}html.motion-ready [data-reveal]{opacity:1;transform:none}}
   </style>
+  <style>
+    .nav .theme-toggle{min-height:36px;display:inline-flex;align-items:center;gap:7px;padding:8px 11px;border:1px solid #ffffff40;border-radius:999px;color:#e3e9df;background:transparent;font:600 .78rem/1 var(--body);cursor:pointer;transition:color .2s,border-color .2s,background .2s}.nav .theme-toggle:hover{border-color:var(--acid);color:var(--acid);background:#ffffff08}.theme-toggle svg{width:15px;height:15px;flex:none}.theme-toggle:active{transform:scale(.97)}
+    html[data-theme="dark"]{color-scheme:dark;--paper:#111713;--surface:#1b241e;--ink:#eef1e8;--muted:#b0bbae;--line:#364138}
+    html[data-theme="dark"] .site-header{border-bottom-color:#ffffff20}
+    html[data-theme="dark"] .section-kicker,html[data-theme="dark"] .section-head .index{color:#b7c4b1}
+    html[data-theme="dark"] .feature{border-color:#3b493b;background:#1c261f}
+    html[data-theme="dark"] .feature-copy .eyebrow,html[data-theme="dark"] .github-recent-heading .eyebrow{color:var(--acid)}
+    html[data-theme="dark"] .feature-copy>p,html[data-theme="dark"] .feature-points li{color:#c5cfc3}
+    html[data-theme="dark"] .feature-points li::before{color:var(--acid)}
+    html[data-theme="dark"] .stackline{color:#aeb9ab}
+    html[data-theme="dark"] .feature-links .button-secondary{border-color:#586558;color:var(--ink)}
+    html[data-theme="dark"] .feature-links .button-secondary:hover{border-color:var(--acid);color:var(--acid)}
+    html[data-theme="dark"] .project-type{border-color:#465247;color:#c1cbbd}
+    html[data-theme="dark"] .project-stack{color:#aab5a7}
+    html[data-theme="dark"] .project-links a{color:#e6ece2}
+    html[data-theme="dark"] .project-links a:hover{color:var(--acid)}
+    html[data-theme="dark"] .github-section{background:#151e18}
+    html[data-theme="dark"] .github-card{border-color:var(--line)}
+    html[data-theme="dark"] .github-profile-link{color:var(--acid)}
+    html[data-theme="dark"] .github-profile-link:hover{color:#efffae}
+    html[data-theme="dark"] .github-stat{border-color:var(--line);background:#222b24}
+    html[data-theme="dark"] .github-stat strong{color:var(--acid)}
+    html[data-theme="dark"] .github-repo{border-color:var(--line);background:#202922}
+    html[data-theme="dark"] .github-repo a{color:#e7eee4}
+    html[data-theme="dark"] .github-repo a:hover{color:var(--acid)}
+    html[data-theme="dark"] .github-repo small{color:#aab5a7}
+    html[data-theme="dark"] .github-empty{color:var(--muted)}
+    html[data-theme="dark"] .about-profile{border-color:var(--line);background:#202922}
+    html[data-theme="dark"] .about-copy>p{color:#c0cabe}
+    html[data-theme="dark"] .stack-group h3{color:#aeb9ab}
+    html[data-theme="dark"] .stack-group p{color:#e0e8dd}
+    html[data-theme="dark"] .footer-inner{color:#a3aea0}
+    html[data-theme="dark"] .footer-links a:hover{color:var(--acid)}
+    @media(prefers-reduced-motion:reduce){.nav .theme-toggle{transition:none}}
+  </style>
 </head>
 <body>
   <a class="skip" href="#main">Skip to content</a>
   <header class="site-header">
     <div class="wrap header-inner">
       <a class="brand" href="#top" aria-label="Prachurya, home"><span class="brand-mark" aria-hidden="true">p.</span><span class="brand-copy"><strong>Prachurya</strong><span>Software engineer</span></span></a>
-      <nav class="nav" aria-label="Main navigation"><a href="#work">Work</a><a href="#github">GitHub</a><a href="#about">About</a><a class="nav-cta" href="#contact">Get in touch ↗</a></nav>
+      <nav class="nav" aria-label="Main navigation"><a href="#work">Work</a><a href="#github">GitHub</a><a href="#about">About</a><button class="theme-toggle" id="theme-toggle" type="button" aria-label="Switch to dark mode" title="Switch to dark mode"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path></svg><span class="theme-toggle-label">Light</span></button><a class="nav-cta" href="#contact">Get in touch ↗</a></nav>
     </div>
   </header>
   <main id="main">
@@ -128,6 +178,31 @@
   <footer class="footer"><div class="wrap footer-inner"><span>© <span id="year">2026</span> Prachurya · Built with care.</span><div class="footer-links"><a href="#top">Back to top ↑</a><a href="https://github.com/theprachurya" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div></div></footer>
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
+
+    var themeToggle = document.getElementById("theme-toggle");
+    var themeToggleLabel = themeToggle.querySelector(".theme-toggle-label");
+    var sunIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path></svg>';
+    var moonIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.9 13A9 9 0 0 1 11 3.1 9 9 0 1 0 20.9 13Z"></path></svg>';
+
+    function setTheme(theme) {
+      var nextTheme = theme === "dark" ? "light" : "dark";
+      document.documentElement.dataset.theme = theme;
+      document.documentElement.style.colorScheme = theme;
+      themeToggleLabel.textContent = theme === "dark" ? "Dark" : "Light";
+      themeToggle.setAttribute("aria-label", "Switch to " + nextTheme + " mode");
+      themeToggle.title = "Switch to " + nextTheme + " mode";
+      themeToggle.querySelector("svg").outerHTML = theme === "dark" ? moonIcon : sunIcon;
+      try {
+        localStorage.setItem("prachurya.portfolio-theme.v1", theme);
+      } catch (error) {
+        // The toggle still works for this visit when browser storage is unavailable.
+      }
+    }
+
+    setTheme(document.documentElement.dataset.theme || "light");
+    themeToggle.addEventListener("click", function () {
+      setTheme(document.documentElement.dataset.theme === "dark" ? "light" : "dark");
+    });
 
     var reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     if (!reduceMotion && "IntersectionObserver" in window) {
