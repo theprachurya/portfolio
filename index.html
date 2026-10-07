@@ -141,6 +141,19 @@
   .lede { margin-top: 22px; font-size: 1.08rem; color: var(--ink-soft); max-width: 60ch; line-height: 1.75; }
   .lede::first-letter { float: left; font-family: var(--font-display); font-weight: 700; font-size: 3.8rem; line-height: .8; padding-right: 10px; padding-top: 4px; color: var(--terracotta); }
   .hero-ctas { margin-top: 28px; display: flex; gap: 12px; flex-wrap: wrap; }
+  .featured-project-link {
+    display: flex; align-items: center; justify-content: space-between; gap: 18px; margin-top: 24px; padding: 17px 19px;
+    border-left: 4px solid var(--teal); background: var(--dark-panel); color: #efeadd; box-shadow: var(--shadow);
+    transition: transform .3s var(--spring), box-shadow .25s ease;
+  }
+  .featured-project-link:hover { transform: translateY(-3px); box-shadow: var(--shadow-lift); }
+  .featured-project-copy { display: grid; gap: 3px; }
+  .featured-project-label, .featured-project-action { font-family: var(--font-mono); font-size: .68rem; letter-spacing: .06em; text-transform: uppercase; }
+  .featured-project-label { color: var(--gold); }
+  .featured-project-title { font-family: var(--font-display); font-size: 1.3rem; line-height: 1.25; }
+  .featured-project-desc { color: #cfc9ba; font-size: .84rem; line-height: 1.5; }
+  .featured-project-action { color: var(--gold); white-space: nowrap; }
+  @media (max-width: 560px) { .featured-project-link { align-items: flex-start; flex-direction: column; gap: 9px; } }
 
   .btn {
     display: inline-flex; align-items: center; gap: 8px; font-family: var(--font-mono); font-size: .8rem; font-weight: 500;
@@ -366,6 +379,14 @@
           <a href="#work" data-page="work" class="btn btn-fill">Browse the work →</a>
           <a href="#contact" data-page="contact" class="btn btn-line">Get in touch</a>
         </div>
+        <a class="featured-project-link" href="https://page-turn-seven.vercel.app" target="_blank" rel="noopener noreferrer" aria-label="Open PageTurn, the featured EPUB reader project">
+          <span class="featured-project-copy">
+            <span class="featured-project-label">Featured project</span>
+            <strong class="featured-project-title">PageTurn</strong>
+            <span class="featured-project-desc">A personal EPUB reader built for focused, offline reading.</span>
+          </span>
+          <span class="featured-project-action">Explore live ↗</span>
+        </a>
       </div>
 
       <aside class="telemetry reveal-item">
@@ -397,7 +418,7 @@
       <div class="reveal-item">
         <p class="page-kicker">Page One</p>
         <h2 class="page-title">Selected work</h2>
-        <p class="page-intro">A selection of current public projects. Filter by type or search for a project directly.</p>
+        <p class="page-intro">PageTurn is the featured project. Explore the reader, then filter or search the rest of the work.</p>
       </div>
 
       <div class="controls-row reveal-item">
@@ -412,20 +433,20 @@
       </div>
 
       <div class="projects-grid reveal-item" id="projectGrid">
-        <article class="project-card featured" data-cat="fullstack" data-project="study-quest" onclick="openInspector('study-quest')">
-          <div class="tagline">Featured · Study Planning</div>
+        <article class="project-card featured" data-cat="fullstack" data-project="pageturn" onclick="openInspector('pageturn')">
+          <div class="tagline">Featured · Reading &amp; Offline-First</div>
+          <h3>PageTurn</h3>
+          <p class="stackline">Next.js · React · Supabase · epub.js · PWA</p>
+          <p class="desc">A browser-based EPUB reader and library with reading progress, highlights, bookmarks, collections, offline access, and cross-device sync.</p>
+          <div class="card-bottom"><div class="tags"><span>Live</span><span>Offline-ready</span><span>Open source</span></div><span class="card-arrow">↗</span></div>
+        </article>
+
+        <article class="project-card" data-cat="fullstack" data-project="study-quest" onclick="openInspector('study-quest')">
+          <div class="tagline">Study Planning</div>
           <h3>Study Quest</h3>
           <p class="stackline">Next.js 16 · TypeScript · MongoDB · Tailwind</p>
           <p class="desc">A study planner that turns subjects, exam dates, priorities, and chapters into a schedule, with notebooks, focus sessions, and progress views in one place.</p>
           <div class="card-bottom"><div class="tags"><span>Vercel-ready</span><span>Study tools</span></div><span class="card-arrow">↗</span></div>
-        </article>
-
-        <article class="project-card" data-cat="fullstack" data-project="pageturn" onclick="openInspector('pageturn')">
-          <div class="tagline">Reading &amp; Offline-First</div>
-          <h3>PageTurn</h3>
-          <p class="stackline">Next.js · React · Supabase · epub.js · PWA</p>
-          <p class="desc">A browser-based EPUB reader and library with reading progress, highlights, bookmarks, collections, offline access, and cross-device sync.</p>
-          <div class="card-bottom"><div class="tags"><span>Live</span></div><span class="card-arrow">↗</span></div>
         </article>
 
         <article class="project-card" data-cat="fullstack" data-project="saveur" onclick="openInspector('saveur')">
@@ -586,7 +607,7 @@
       features: ["Subject priorities, exam dates, and chapter-level planning", "Schedule, learning guide, and repair flow", "Notebook Q&A and interactive mind maps", "Focus timer, journal, and study streaks", "Local development with MongoDB persistence for hosted deployments"] },
     "pageturn": { category: "Reading & Offline-First", repo: "https://github.com/theprachurya/PageTurn", live: "https://page-turn-seven.vercel.app",
       description: "A browser-based EPUB reader, library manager, and reading-analytics application built to feel native.",
-      features: ["EPUB rendering with highlights, bookmarks, shelves, and tags", "Reading sessions and statistics", "Offline caching and queued offline actions", "Cross-device sync via Supabase Realtime", "Upload retries and cleanup for failed library imports"] },
+      features: ["EPUB rendering with highlights, bookmarks, shelves, and tags", "Reading analytics with 30-day, 90-day, yearly, and all-time views", "Offline caching and queued offline actions", "Cross-device sync via Supabase Realtime", "Upload retries and cleanup for failed library imports"] },
     "saveur": { category: "Operations", repo: "https://github.com/theprachurya/saveur-restaurant-os", live: "https://saveur-restaurant-os.vercel.app",
       description: "Restaurant ordering and management software with separate customer and owner workflows.",
       features: ["Menu and cart management with order history", "Live inventory tracking with low-stock alerts", "Stock-safe checkout logic", "In-browser QA test screen for order flows"] },
