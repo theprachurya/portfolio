@@ -202,9 +202,10 @@
         var description = document.createElement("p");
         description.textContent = repo.language ? repo.language + " · public repository" : "Public repository";
         var updated = document.createElement("small");
+        var starCount = repo.stargazers_count || 0;
         updated.textContent = (repo.pushed_at
           ? "Pushed " + new Date(repo.pushed_at).toLocaleDateString(undefined, { month: "short", day: "numeric" })
-          : "No recent pushes") + " · " + numberFormat.format(repo.stargazers_count || 0) + " stars";
+          : "No recent pushes") + " · " + numberFormat.format(starCount) + (starCount === 1 ? " star" : " stars");
         card.append(link, description, updated);
         repositoryList.appendChild(card);
       });
@@ -217,7 +218,7 @@
       var cache = readGithubCache();
       var cacheIsFresh = cache && Date.now() - cache.savedAt < githubCacheTtl;
       if (cacheIsFresh) {
-        renderGithubStats(cache.data, "Showing recently cached GitHub data.");
+        renderGithubStats(cache.data, "Showing recently updated GitHub data.");
         return;
       }
 
